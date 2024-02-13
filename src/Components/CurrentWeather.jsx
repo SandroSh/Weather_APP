@@ -53,7 +53,7 @@ const CurrentWeather = ({ data, futureWeather }) => {
   ).toLocaleTimeString();
 
   
-  console.log(`src/assets/${data.weather[0].icon}.png`);
+ 
 
   return (
     <MainDiv>

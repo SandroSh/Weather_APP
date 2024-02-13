@@ -27,7 +27,7 @@ const Forecast = ({ data }) => {
   const showedDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(
     WEEK_DAYS.slice(0, dayInAWeek)
   );
-  console.log(`src/assets/${item.weather[0].icon}.png`);
+  
   return (
     <MainContainer>
       <h1>Next 7 Days Forecast</h1>
