@@ -143,7 +143,7 @@ const CurrentWeather = ({ data, futureWeather }) => {
           </Top>
           {data.weather[0].icon && 
             <img
-              src={currentWeatherIcon}
+              src={currentWeatherIcon()}
               alt="Weather"
               onError={(e) => console.error("Image load error:", e)}
             />
