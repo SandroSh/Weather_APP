@@ -47,6 +47,8 @@ const Forecast = ({ data }) => {
     WEEK_DAYS.slice(0, dayInAWeek)
   );
   const currentWeatherIcon = (item) => {
+        // because of API this type of code doesn't works `src/assets/${data.weather[0].icon}.png`, and i had to write this bad practice code  
+
     if (item.weather[0].icon == "01d") {
       return i01d;
     }
