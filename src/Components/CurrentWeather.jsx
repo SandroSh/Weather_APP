@@ -53,7 +53,7 @@ const CurrentWeather = ({ data, futureWeather }) => {
   ).toLocaleTimeString();
 
   
-  const imgURL = `src/assets/${data.weather[0].icon}.png`;
+  console.log(`src/assets/${data.weather[0].icon}.png`);
 
   return (
     <MainDiv>
@@ -67,7 +67,7 @@ const CurrentWeather = ({ data, futureWeather }) => {
           </Top>
           {data.weather[0].icon && 
             <img
-              src={imgURL}
+              src={`src/assets/${data.weather[0].icon}.png`}
               alt="Weather"
               onError={(e) => console.error("Image load error:", e)}
             />
