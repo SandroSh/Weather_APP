@@ -1,6 +1,14 @@
 import React from "react";
 import SunsetIcon from "../assets/sunset.svg";
 import SunriseIcon from "../assets/sunrise.svg";
+import NE from "../assets/NE.svg";
+import E from "../assets/E.svg";
+import SE from "../assets/SE.svg";
+import S from "../assets/S.svg";
+import SW from "../assets/SW.svg";
+import W from "../assets/W.svg";
+import NW from "../assets/NW.svg";
+import N from "../assets/N.svg";
 import {
   MainDiv,
   WeatherContainer,
@@ -17,23 +25,23 @@ import {
 const CurrentWeather = ({ data, futureWeather }) => {
   const windDirection = () => {
     if (data.wind.deg >= 20 && data.wind.deg <= 60) {
-      return "src/assets/NE.svg";
+      return NE;
     } else if (data.wind.deg > 60 && data.wind.deg <= 120) {
-      return "src/assets/E.svg";
+      return E;
     } else if (data.wind.deg > 120 && data.wind.deg <= 160) {
-      return "src/assets/SE.svg";
+      return SE;
     } else if (data.wind.deg > 160 && data.wind.deg <= 200) {
-      return "src/assets/S.svg";
+      return S;
     } else if (data.wind.deg > 200 && data.wind.deg <= 250) {
-      return "src/assets/SW.svg";
+      return SW;
     } else if (data.wind.deg > 250 && data.wind.deg <= 290) {
-      return "src/assets/W.svg";
+      return W;
     } else if (data.wind.deg > 290 && data.wind.deg <= 335) {
-      return "src/assets/NW.svg";
+      return NW;
     } else if (data.wind.deg >= 335 && data.wind.deg < 20) {
-      return "src/assets/N.svg";
+      return N;
     } else {
-      return "src/assets/N.svg";
+      return N;
     }
   };
 
@@ -43,6 +51,10 @@ const CurrentWeather = ({ data, futureWeather }) => {
   const sunset = new Date(
     futureWeather.city.sunset * 1000
   ).toLocaleTimeString();
+
+  
+  const imgURL = `src/assets/${data.weather[0].icon}.png`;
+
   return (
     <MainDiv>
       <WeatherContainer>
@@ -53,7 +65,13 @@ const CurrentWeather = ({ data, futureWeather }) => {
               {data.weather[0].description}
             </WeatherDescription>
           </Top>
-          <img src={`src/assets/${data.weather[0].icon}.png`} alt="Weather" />
+          {data.weather[0].icon && 
+            <img
+              src={imgURL}
+              alt="Weather"
+              onError={(e) => console.error("Image load error:", e)}
+            />
+          }
         </InnerDiv>
         <h2>{data.main.temp.toFixed(1)}°C</h2>
         <h3>
@@ -105,7 +123,7 @@ const CurrentWeather = ({ data, futureWeather }) => {
           </h2>
         </StatsContainer>
       </StatsBigContainer>
-      <WeatherContainer >
+      <WeatherContainer>
         <div
           style={{
             display: "flex",

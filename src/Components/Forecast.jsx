@@ -43,11 +43,13 @@ const Forecast = ({ data }) => {
                   </div>
                   <DailyItemInner>
                     <h3> {item.main.temp.toFixed(1)}°C</h3>
-
-                    <img
-                      src={`src/assets/${item.weather[0].icon}.png`}
-                      alt="Current Weather Icon"
-                    />
+                    {item.weather[0].icon && (
+                      <img
+                        src={`src/assets/${item.weather[0].icon}.png`}
+                        alt="Weather Icon"
+                        onError={(e) => console.error("Image load error:", e)}
+                      />
+                    )}
                   </DailyItemInner>
                 </DailyItem>
               </AccordionItemButton>
